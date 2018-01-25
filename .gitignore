@@ -1,0 +1,5 @@
+# Project ignore files
+/target
+.idea
+*.iml
+src/test/

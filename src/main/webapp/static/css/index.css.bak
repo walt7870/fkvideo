@@ -1,0 +1,303 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    min-width: 1140px;
+    min-height: 740px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.main {
+    width: 94%;
+    height: 96%;
+    position: absolute;
+    left: 3%;
+    top: 2%;
+}
+
+.top_box {
+    width: 100%;
+    height: 33%;
+    margin-bottom: 2%;
+}
+
+.bottom_box {
+    width: 100%;
+    height: 55%;
+}
+
+.file_box {
+    border: 1px solid #959595;
+    width: 31%;
+    height: 100%;
+    float: left;
+    border-radius: 10px;
+    position: relative;
+}
+
+.top_left_box,
+.top_middle_box {
+    margin-right: 2.8%;
+}
+
+.content_box {
+    width: 86%;
+    height: 90%;
+    position: absolute;
+    top: 4%;
+    left: 7%;
+}
+
+.title_box {
+    border-bottom: 1px solid #959595;
+    width: 75%;
+    height: 15%;
+    font-size: 18px;
+    font-family: "微软雅黑";
+    color: #5caade;
+}
+
+.select_box {
+    padding-top: 7%;
+    height: 25px;
+    color: #515050;
+}
+
+.file_text {
+    float: left;
+}
+
+.select_file {
+    float: left;
+}
+
+.select_file .pic {
+    width: 200px;
+}
+
+.btn_box {
+    width: 60%;
+    margin-left: 40%;
+    height: 30px;
+    margin-top: 11%;
+}
+
+.upload {
+    width: 45%;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+    color: white;
+    background: url('../img/btn1.png') no-repeat;
+    background-size: 100% 30px;
+    cursor: pointer;
+}
+
+.cancel {
+    width: 45%;
+    height: 100%;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background: url('../img/btn2.png') no-repeat;
+    background-size: 100% 30px;
+    cursor: pointer;
+}
+
+.select_video {
+    color: #515050;
+}
+
+.select_video input {
+    width: 15px;
+    height: 15px;
+}
+
+.select_video {
+    height: 150px;
+    overflow: auto;
+    padding: 15px 5px;
+}
+
+.select_video td {
+    white-space: nowrap;
+}
+
+.file_progress {
+    float: left;
+}
+
+.slippage {
+    padding-left: 10%;
+    margin-top: 5%;
+    float: left;
+}
+
+.text_border {
+    margin-top: 5%;
+}
+
+.text_border input {
+    width: 40px;
+    text-align: center;
+    font-size: 15px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #a3a3a4;
+    color: #5d5e5f;
+    margin-left: 3%;
+}
+
+.bottom_btn_box {
+    width: 11%;
+    height: 100%;
+    float: left;
+}
+
+.search_btn {
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    background: url(img/btn1.png) no-repeat;
+    background-size: 100% 50px;
+    cursor: pointer;
+    margin-top: 35%;
+}
+
+.over_btn {
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    background: url(img/btn2.png) no-repeat;
+    background-size: 100% 50px;
+    cursor: pointer;
+    margin-top: 20%;
+}
+
+.results_box {
+    width: 42%;
+    height: 100%;
+    float: left;
+    border: 2px solid #5caade;
+    margin-right: 4%;
+}
+
+.video_box {
+    width: 40%;
+    height: 98%;
+    float: right;
+    margin-right: 1%;
+    border: 3px solid #000000;
+}
+
+.results_title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #5caade;
+    color: white;
+    font-size: 18px;
+}
+
+.results_title span {
+    margin-left: 20px;
+}
+
+.img_box {
+    border: 1px solid #5caade;
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 90%;
+    height: 90%;
+    float: left;
+}
+
+.bottom_text {
+    font-size: 15px;
+    color: #565757;
+    font-family: "微软雅黑";
+    text-align: center;
+}
+
+.max_box {
+    width: 50%;
+    float: left;
+}
+
+.img_border {
+    border: 1px solid #959595;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.img_border img {
+    width: 100%;
+    height: 100%;
+}
+
+.img_box_min {
+    padding-top: 10px;
+    float: left;
+    width: 49%;
+    height: 100%;
+}
+
+.img_text {
+    font-size: 13px;
+    padding-top: 3px;
+    text-align: center;
+    color: #605f5f;
+}
+
+.video_box img {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    width: 94%;
+    height: 78%;
+    margin-left: 2.5%;
+    overflow: auto;
+}
+.tips {
+    width: 91%;
+    margin-left: 4.5%;
+    margin-top: 10px;
+}
+
+.logo_box {
+    margin-top: 5px;
+    width: 80%;
+}
+
+.logo_box img {
+    width: 100%;
+}
+.thumbnail{
+    border:1px solid #5caade;
+    background: white;
+    box-shadow: 3px 3px 3px #959595;
+    width: 60%;
+    margin-left: 15%;
+    margin-top: 15%;
+}

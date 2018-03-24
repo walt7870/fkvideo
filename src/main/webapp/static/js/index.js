@@ -1,16 +1,37 @@
-// var flashvars = {
-//     f: './fkvideo/video/11.flv',    //视频地址
-//     c: 0,            //调用ckplayer.js中的ckstyle()
-//     p: 2,            //默认不加载视频，点击播放才开始加载
-//     i: './images/ntech.jpg'     //封面图地址
-// };
-// var params = {bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent'};
-// //设置播放器地址、视频容器id、宽高等信息
-// CKobject.embedSWF('./ckplayer/ckplayer.swf', 'video1', 'ckplayer_a1', '450', '360', flashvars, params);
-//playVideo("a",2)
-var picBase64
-$(document).ready(function () {
 
+var picBase64
+$(document).ready(function(){
+	width_height(".right_photo");
+	width_height(".btn_top");
+	photo_bg()
+	max_box();
+	img_box();
+	img_border();
+	$(window).resize(function(){
+		width_height(".right_photo");
+		width_height(".btn_top");
+		photo_bg();
+		max_box();
+		img_box();
+		img_border();
+	})
+
+    /*function width_h() {
+        var width1 = $(".img_border").width();
+        $(".img_border").css("height", width1);
+        var width2 = $(".img_box").width();
+        $(".img_box").css("height", width1 + 35);
+        $(".max_box").css("height", $(".img_box").height() + 50)
+        $(".thumbnail").css("height", $(".thumbnail").width());
+    }
+
+    $(function () {
+        width_h();
+        $(window).resize(function () {//当窗口大小发生变化时
+            width_h()
+        });
+    })*/
+	//================== BAK =======================
     fkstatus = 0;
     initTime = 8;
     myId = guid();
@@ -34,14 +55,6 @@ $(document).ready(function () {
         websocket.onerror = errorWs;
 
     }
-
-    // if ('WebSocket' in window) {
-    //     websocket = new WebSocket("ws://"+window.location.hostname+":"+port+"/fkvideo/fkFacePushWs");
-    // } else if ('MozWebSocket' in window) {
-    //     websocket = new MozWebSocket("ws://"+window.location.hostname+":"+port+"/fkvideo/fkFacePushWs");
-    // } else {
-    //     websocket = new SockJS("http://localhost:"+port+"/fkvideo/sockjs/fkFacePushWs");
-    // }
 
     function openWs() {
         repeatCon = 18
@@ -78,35 +91,6 @@ $(document).ready(function () {
     }
     //连接websocket
     connectWs();
-    // websocket.onopen = function (evnt) {
-    //     console.log("WebSocket连接成功");
-    //     websocket.send(myId);
-    //     // $("#msgcount").append("WebSocket链接开始！<br/>");
-    // };
-    // websocket.onmessage = function (evnt) {
-    //     if(evnt.data=="end"){
-    //         fkstatus = 0;
-    //         alert("视频检测结束");
-    //         return false;
-    //     }
-    //     if(evnt.data =="stop"){
-    //         return false;
-    //     }
-    //     if(evnt.data=="errorEnd"){
-    //         console.log("errorEnd");
-    //         return false;
-    //     }
-    //     getResult(evnt.data);
-    // };
-    // websocket.onerror = function (evnt) {
-    //     console.log("WebSocket连接出错");
-    //     //$("#msgcount").append("WebSocket链接出错！<br/>");
-    // };
-    // websocket.onclose = function (evnt) {
-    //     alert("websocket连接断开！请按ctrl+F5刷新网页");
-    //     console.log("WebSocket连接关闭");
-    //     //$("#msgcount").append("WebSocket链接关闭！<br/>");
-    // };
 
 
     //GrindPlayer===============================
@@ -125,7 +109,7 @@ $(document).ready(function () {
     var attrs = {
         name: "player"
     };
-    swfobject.embedSWF("static/grindPlayer/GrindPlayer.swf", "player", "42%", "98%", "10.2", null, flashvars, params, attrs);
+    swfobject.embedSWF("static/grindPlayer/GrindPlayer.swf", "player", "100%", "50%", "10.2", null, flashvars, params, attrs);
 
 
     //==========================================
@@ -196,8 +180,8 @@ $(document).ready(function () {
             videoName = $("input[name='video']:checked").val()
         } else if (radioVal == 'stream') {
             var streamVideo = $("input[name='fileStream']").val();
-            if (!streamVideo || streamVideo.indexOf("rtsp") == -1) {
-                alert("视频流需要是rtsp格式");
+            if (!streamVideo || streamVideo.indexOf("rtsp") == -1 && streamVideo.indexOf("rtmp") == -1) {
+                alert("请输入rtsp或rtmp格式的视频流地址");
                 return false;
             }
             videoName = streamVideo;
@@ -209,7 +193,7 @@ $(document).ready(function () {
             return false;
         }
         //初始化视频检测=========
-        swfobject.embedSWF("static/grindPlayer/GrindPlayer.swf", "player", "42%", "98%", "10.2", null, flashvars, params, attrs);
+        swfobject.embedSWF("static/grindPlayer/GrindPlayer.swf", "player", "100%", "50%", "10.2", null, flashvars, params, attrs);
 
 
         //================================
@@ -308,6 +292,7 @@ $(document).ready(function () {
                     } else {
 
                         var confidence = boxFaces['confidence'];
+                        confidence = confidence.toFixed(3);
                         var verified = boxFaces['verified'];
 
                         //                        timePic=tmprResult[j]['photo'].split("/")[6].split(".")[0].substring(0,13);
@@ -322,11 +307,11 @@ $(document).ready(function () {
                         demo = '<div class="max_box">' +
                             '<div class="img_box">' +
                             '<div class="img_box_min"> ' +
-                            '<div class="img_border"><img src="' + catchFace + '"/></div>' +
+                            '<div class="img_border"><img src="' + catchFace + '" width="100%"/></div>' +
                             '<div class="img_text">人脸截图</div>' +
                             '</div>' +
                             '<div class="img_box_min"> ' +
-                            '<div class="img_border"><img src="' + catchView + '"/></div>' +
+                            '<div class="img_border"><img src="' + catchView + '" width="100%" /></div>' +
                             '<div class="img_text">场景截图</div>' +
                             '</div>' +
                             '</div>' +
@@ -343,7 +328,30 @@ $(document).ready(function () {
 
     }
 })
+//=================================================================================
+//获取宽度，让高度等于宽度
+function width_height(width_height){
+	var _width=$(width_height).width();
+	$(width_height).css("height",_width);
+}
+function photo_bg(){
+	var bg_height=$(".photo_bg").height();
+	$(".btn_top").css("width",bg_height*0.4);
+	$(".btn_top").css("height",bg_height*0.4);
+}
+function max_box(){
+	$(".max_box").css("height",$(".img_box").height()+83)
+}
+function img_box(){
+	$(".img_box").css("height",$(".img_border").width()+35);
+}
+function img_border(){
+	$(".img_border").css("height",$(".img_border").width());
+}
 
+
+
+//==================== BAK ======================
 var ot;//
 //上传文件方法
 function getVideo() {
@@ -444,7 +452,7 @@ function progressFunction(evt) {
         time.innerHTML = '上传已取消';
 }
 
-function playVideo(url, auto) {
+/*function playVideo(url, auto) {
     var flashvars = {
         f: url,    //视频地址
         c: 0,            //调用ckplayer.js中的ckstyle()
@@ -454,7 +462,7 @@ function playVideo(url, auto) {
     var params = {bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent'};//设置播放器地址、视频容器id、宽高等信息
     CKobject.embedSWF('static/ckplayer/ckplayer.swf', 'video1', 'ckplayer_a1', '100%', '100%', flashvars, params)
 
-}
+}*/
 
 //上传成功响应
 function uploadComplete(evt) {
@@ -472,8 +480,3 @@ function uploadFailed(evt) {
 function cancleUploadFile() {
     xhr.abort();
 }
-
-
-
-
-
